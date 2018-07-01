@@ -1,0 +1,44 @@
+'''
+You have to design a movie recommendation database.
+Movies have two attributes: id, title. A possible movie record is as follows: 54796, 2 Days in Paris (2007).
+A movie can be categorized into multiple genres. A movie may not have a genre.
+A user can give a 5-star scale rating (1-5) to a movie. A user can only rate a movie once. Log each rating operation.
+A user can also assign a tag to a movie (multiple times). Log each tagging operation.
+
+Schema:
+  users - table of users
+    userid - Primary Key, serial
+    name - char(50), Not Null
+  movies - table of movies
+    movieid - Primary Key, serial
+    title - varchar(), Not Null
+  taginfo - list of added tags
+    tagid - Primary Key, serial
+    content - varchar(), Not Null
+  genres - table of different genres
+    genreid - Primary Key, serial
+    name - char(25), Not Null
+  raitings - movie rating given by users
+    userid - Foreign Key, Reference users.userid
+    movieid - FOreign Key, Reference movies.movieid
+    rating - smallint(), Check (rating BETWEEN 1 and 5)
+    timestamp - biging(), Not Null (sec since 1.1.1970)
+    Primary Key (userid, movieid) // this will guarantie that a user gives a rating to a single movie only once,
+                                  // and there are no Null values
+  tags - given tags to movies
+     userid - Foreign Key, Reference users.userid
+     movieid - Foreign Key, Reference movies.movieid
+     tagid - Foreign Key, Refenrence taginfo.tagid
+  hasgenre - assigned genres to movies
+    movieid - Foreign Key, Refenrece movies.movieid
+    genreid - Foreign Key, Reference genres.genrid
+    
+TEST DATA:
+  Simple test data.The delimiter of all files is “%”.
+  Data link:
+  https://github.com/jiayuasu/Coursera-ASU-Database/tree/master/course1/assignment1/exampleinput
+  Can use "Copy From/Insert" to load data
+'''
+
+
+
